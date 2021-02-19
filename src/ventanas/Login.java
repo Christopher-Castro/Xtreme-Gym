@@ -11,6 +11,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.sql.*;
 import clases.Conexion;
+import java.net.URL;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,14 +32,16 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Acceso al sistema");
         setLocationRelativeTo(null);
-
-        ImageIcon wallpaper = new ImageIcon("images/wallpaperPrincipal.jpg");
+        
+        URL url = Login.class.getResource("/wallpaperPrincipal.jpg");
+        ImageIcon wallpaper = new ImageIcon(url);
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_Wallpaper.getWidth(),
                 jLabel_Wallpaper.getHeight(), Image.SCALE_DEFAULT));
         jLabel_Wallpaper.setIcon(icono);
         this.repaint();
-
-        ImageIcon wallapper_logo = new ImageIcon("src/images/DS.png");
+        
+        url = Login.class.getResource("/DS.png");
+        ImageIcon wallapper_logo = new ImageIcon(url);
         Icon icono_logo = new ImageIcon(wallapper_logo.getImage().getScaledInstance(jLabel_Logo.getWidth(),
                 jLabel_Logo.getHeight(), Image.SCALE_DEFAULT));
         jLabel_Logo.setIcon(icono_logo);
@@ -47,7 +50,8 @@ public class Login extends javax.swing.JFrame {
 
     @Override
     public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/icon.png"));
+        URL url = Login.class.getResource("/icon.png");
+        Image retValue = Toolkit.getDefaultToolkit().getImage(url);
         return retValue;
     }
 

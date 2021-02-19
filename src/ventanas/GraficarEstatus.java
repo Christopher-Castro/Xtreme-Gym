@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.net.URL;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -43,7 +44,8 @@ public class GraficarEstatus extends javax.swing.JFrame {
         
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
-        ImageIcon wallpaper = new ImageIcon("src/images/wallpaperPrincipal.jpg");
+        URL url = Login.class.getResource("/wallpaperPrincipal.jpg");
+        ImageIcon wallpaper = new ImageIcon(url);
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_Wallpaper.getWidth(),
                 jLabel_Wallpaper.getHeight(), Image.SCALE_DEFAULT));
         jLabel_Wallpaper.setIcon(icono);
@@ -88,7 +90,8 @@ public class GraficarEstatus extends javax.swing.JFrame {
     
     @Override
     public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/icon.png"));
+        URL url = Login.class.getResource("/icon.png");
+        Image retValue = Toolkit.getDefaultToolkit().getImage(url);
         return retValue;
     }
 
