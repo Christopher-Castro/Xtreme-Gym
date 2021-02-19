@@ -251,6 +251,14 @@ public class Ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        fplib.CloseDevice();
+        fplib.Close();
+        
+        try {
+            ino.killArduinoConnection();
+        } catch (Exception e) {
+            
+        }
         
     }//GEN-LAST:event_formWindowClosed
 

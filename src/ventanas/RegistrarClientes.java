@@ -134,6 +134,11 @@ public class RegistrarClientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(630, 540));
         setPreferredSize(new java.awt.Dimension(630, 540));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -744,6 +749,11 @@ public class RegistrarClientes extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonVerifyActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        fplib.CloseDevice();
+        fplib.Close();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
