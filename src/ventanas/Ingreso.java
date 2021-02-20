@@ -78,14 +78,15 @@ public class Ingreso extends javax.swing.JFrame {
         user = Login.user;
         ino = new PanamaHitek_Arduino();
         try {
-            ino.arduinoTX("COM5", 9600);
+            ino.arduinoTX("COM4", 9600);
         } catch (Exception e) {
             System.out.println("error arduino");
         }
         
         
         setTitle("Registrar nuevo cliente - Sesión de " + user);
-
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setSize(1500, 800);
         setResizable(false);
         setLocationRelativeTo(null);
         
@@ -159,6 +160,8 @@ public class Ingreso extends javax.swing.JFrame {
         jLabel_Wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximizedBounds(new java.awt.Rectangle(2147483647, 2147483647, 2147483647, 2147483647));
+        setSize(new java.awt.Dimension(2147483647, 2147483647));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -169,7 +172,7 @@ public class Ingreso extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_NombreUsuario.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        jLabel_NombreUsuario.setFont(new java.awt.Font("Arial", 1, 60)); // NOI18N
         jLabel_NombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_NombreUsuario.setText("Sistema de ingreso");
         jLabel_NombreUsuario.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -177,51 +180,53 @@ public class Ingreso extends javax.swing.JFrame {
                 jLabel_NombreUsuarioComponentShown(evt);
             }
         });
-        getContentPane().add(jLabel_NombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 12, -1, -1));
+        getContentPane().add(jLabel_NombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
 
-        d.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        d.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         d.setForeground(new java.awt.Color(204, 204, 204));
         d.setText("jLabel1");
-        getContentPane().add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        getContentPane().add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        mensaje.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        mensaje.setFont(new java.awt.Font("Arial", 0, 100)); // NOI18N
         mensaje.setForeground(new java.awt.Color(255, 255, 255));
         mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mensaje.setText("jLabel1");
-        getContentPane().add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
+        getContentPane().add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, -1, -1));
 
-        date.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        date.setFont(new java.awt.Font("Arial", 0, 60)); // NOI18N
         date.setForeground(new java.awt.Color(255, 255, 255));
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date.setText("jLabel1");
-        getContentPane().add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+        getContentPane().add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
 
+        jLabelStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelStatus.setText("Click Initialize Button ...");
         jLabelStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        getContentPane().add(jLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 301, 610, 30));
+        getContentPane().add(jLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 1420, 30));
 
         jLabelVerifyImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jLabelVerifyImage.setMinimumSize(new java.awt.Dimension(130, 150));
         jLabelVerifyImage.setPreferredSize(new java.awt.Dimension(130, 150));
-        getContentPane().add(jLabelVerifyImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 94, -1, -1));
+        getContentPane().add(jLabelVerifyImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 100, -1, -1));
 
         jProgressBarV1.setForeground(new java.awt.Color(0, 51, 153));
-        getContentPane().add(jProgressBarV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 244, 130, -1));
+        getContentPane().add(jProgressBarV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 250, 130, -1));
 
+        jLabel_footer.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel_footer.setText("                       Xtreme Gym ®");
-        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
+        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 650, -1, -1));
 
-        name.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        name.setFont(new java.awt.Font("Arial", 0, 60)); // NOI18N
         name.setForeground(new java.awt.Color(255, 255, 255));
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("jLabel1");
-        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, -1));
+        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
 
-        n.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        n.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         n.setForeground(new java.awt.Color(204, 204, 204));
         n.setText("jLabel1");
-        getContentPane().add(n, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 370));
+        getContentPane().add(n, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1540, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -254,9 +259,7 @@ public class Ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        fplib.CloseDevice();
-        fplib.Close();
-        
+
         try {
             ino.killArduinoConnection();
         } catch (Exception e) {

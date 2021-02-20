@@ -1,11 +1,16 @@
-int boton = 2;
-int torniquete = LED_BUILTIN;
-int tiempo = 5000; 
+int boton = 7;
+int luz = 8;
+int torniquete = 10;
+int tiempo = 3000; 
 
 void setup() {
   
   pinMode(torniquete, OUTPUT);
-  pinMode(boton, INPUT);
+  pinMode(luz, OUTPUT);
+  pinMode(boton, INPUT_PULLUP);
+
+  digitalWrite(torniquete, LOW);
+  digitalWrite(luz, LOW);
   
   Serial.begin(9600);
 }
@@ -16,9 +21,21 @@ void loop() {
     int input = Serial.read();
       if (input == '1') {
         
-        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(luz, HIGH);
+        digitalWrite(torniquete, HIGH);
         delay(tiempo);
-        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(luz, LOW);
+        digitalWrite(torniquete, LOW);
       }
   }
+
+  if (digitalRead(boton) == HIGH) {
+        
+        digitalWrite(luz, HIGH);
+        digitalWrite(torniquete, HIGH);
+        delay(tiempo);
+        digitalWrite(luz, LOW);
+        digitalWrite(torniquete, LOW);
+        Serial.println("boton");
+      }
 }
