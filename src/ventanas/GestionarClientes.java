@@ -54,7 +54,7 @@ public class GestionarClientes extends javax.swing.JFrame {
             Connection cn = Conexion.conectar();
             
             PreparedStatement pst = cn.prepareStatement(
-                    "select id_cliente, nombre_cliente, mail_cliente, tel_cliente, ultima_modificacion from clientes");
+                    "select id_cliente, nombre_cliente, ci_cliente, mail_cliente, tel_cliente, ultima_modificacion from clientes");
             
             ResultSet rs = pst.executeQuery();
             
@@ -63,13 +63,14 @@ public class GestionarClientes extends javax.swing.JFrame {
             
             model.addColumn(" ");
             model.addColumn("Nombre");
+            model.addColumn("C.I.");
             model.addColumn("em@il");
             model.addColumn("Télefono");
             model.addColumn("Modificado por");
             
             while (rs.next()) {
-                Object[] fila = new Object[5];
-                for (int i = 0; i < 5; i++) {
+                Object[] fila = new Object[6];
+                for (int i = 0; i < 6; i++) {
                     fila[i] = rs.getObject(i + 1);
                     System.out.println(rs.getObject(i + 1));
                 }

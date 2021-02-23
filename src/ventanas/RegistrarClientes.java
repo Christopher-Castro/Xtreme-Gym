@@ -106,7 +106,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        txt_mail = new javax.swing.JTextField();
+        txt_ci = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
         txt_direccion = new javax.swing.JTextField();
         jButton = new javax.swing.JButton();
@@ -132,6 +132,8 @@ public class RegistrarClientes extends javax.swing.JFrame {
         jProgressBarV1 = new javax.swing.JProgressBar();
         jComboBoxVerifySecurityLevel = new javax.swing.JComboBox();
         jLabelRegistrationBox = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txt_mail = new javax.swing.JTextField();
         jLabel_Wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -156,23 +158,23 @@ public class RegistrarClientes extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("em@il:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        jLabel3.setText("C.I.");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Teléfono:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Dirección:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Registrar cliente:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
 
         txt_nombre.setBackground(new java.awt.Color(153, 153, 153));
         txt_nombre.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -189,26 +191,31 @@ public class RegistrarClientes extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 140, 30));
 
-        txt_mail.setBackground(new java.awt.Color(153, 153, 153));
-        txt_mail.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        txt_mail.setForeground(new java.awt.Color(255, 255, 255));
-        txt_mail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_mail.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 210, -1));
+        txt_ci.setBackground(new java.awt.Color(153, 153, 153));
+        txt_ci.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        txt_ci.setForeground(new java.awt.Color(255, 255, 255));
+        txt_ci.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_ci.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txt_ci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ciActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_ci, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 210, -1));
 
         txt_telefono.setBackground(new java.awt.Color(153, 153, 153));
         txt_telefono.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         txt_telefono.setForeground(new java.awt.Color(255, 255, 255));
         txt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_telefono.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 210, -1));
+        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 210, -1));
 
         txt_direccion.setBackground(new java.awt.Color(153, 153, 153));
         txt_direccion.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
         txt_direccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_direccion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 210, -1));
+        getContentPane().add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 210, -1));
 
         jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         jButton.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +223,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 jButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 120, 100));
+        getContentPane().add(jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 120, 100));
 
         jLabelRegisterImage1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jLabelRegisterImage1.setMinimumSize(new java.awt.Dimension(130, 150));
@@ -229,7 +236,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
         getContentPane().add(jLabelRegisterImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
 
         jLabel_footer.setText("                       Xtreme Gym ®");
-        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, -1));
 
         jButtonRegister.setText("Validar muestra");
         jButtonRegister.setActionCommand("jButton1");
@@ -305,7 +312,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
 
         jLabelStatus.setText("Click Initialize Button ...");
         jLabelStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        getContentPane().add(jLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 380, 30));
+        getContentPane().add(jLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 590, 30));
 
         jLabelVerificationBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Verification"));
         getContentPane().add(jLabelVerificationBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 160, 340));
@@ -354,6 +361,23 @@ public class RegistrarClientes extends javax.swing.JFrame {
         jLabelRegistrationBox.setBackground(new java.awt.Color(204, 204, 204));
         jLabelRegistrationBox.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de huella dactilar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         getContentPane().add(jLabelRegistrationBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 340, 420));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("em@il:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        txt_mail.setBackground(new java.awt.Color(153, 153, 153));
+        txt_mail.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        txt_mail.setForeground(new java.awt.Color(255, 255, 255));
+        txt_mail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_mail.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txt_mail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_mailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 210, -1));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 520));
 
         pack();
@@ -362,7 +386,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private void jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActionPerformed
 
         int validacion = 0;
-        String nombre, mail, telefono, direccion;
+        String nombre, ci, mail, telefono, direccion;
         
         int[] matchScore = new int[1];
         boolean[] matched = new boolean[1];
@@ -372,6 +396,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
         iError = fplib.MatchTemplate(regMin1,regMin2, secuLevel, matched);
         
         nombre = txt_nombre.getText().trim();
+        ci = txt_ci.getText().trim();
         mail = txt_mail.getText().trim();
         telefono = txt_telefono.getText().trim();
         direccion = txt_direccion.getText().trim();
@@ -380,6 +405,12 @@ public class RegistrarClientes extends javax.swing.JFrame {
             txt_nombre.setBackground(Color.red);
             validacion++;
         }
+        
+        if(ci.equals("")){
+            txt_ci.setBackground(Color.red);
+            validacion++;
+        }
+        
         if(mail.equals("")){
             txt_mail.setBackground(Color.red);
             validacion++;
@@ -452,15 +483,16 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 
                 Connection cn = Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
-                        "insert into clientes values (?,?,?,?,?,?,?)");
+                        "insert into clientes values (?,?,?,?,?,?,?,?)");
                 
                 pst.setInt(1, 0);
                 pst.setString(2, nombre);
-                pst.setString(3, mail);
-                pst.setString(4, telefono);
-                pst.setString(5, direccion);
-                pst.setBytes(6, regMin1);
-                pst.setString(7, user);
+                pst.setString(3, ci);
+                pst.setString(4, mail);
+                pst.setString(5, telefono);
+                pst.setString(6, direccion);
+                pst.setBytes(7, regMin1);
+                pst.setString(8, user);
                 
                 pst.executeUpdate();
                 cn.close();
@@ -468,6 +500,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 Limpiar();
                 
                 txt_nombre.setBackground(Color.green);
+                txt_ci.setBackground(Color.green);
                 txt_mail.setBackground(Color.green);
                 txt_telefono.setBackground(Color.green);
                 txt_direccion.setBackground(Color.green);
@@ -758,6 +791,14 @@ public class RegistrarClientes extends javax.swing.JFrame {
         fplib.Close();
     }//GEN-LAST:event_formWindowClosed
 
+    private void txt_ciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ciActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_ciActionPerformed
+
+    private void txt_mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_mailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_mailActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -804,6 +845,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxRegisterSecurityLevel;
     private javax.swing.JComboBox jComboBoxVerifySecurityLevel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -825,6 +867,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBarV1;
     private javax.swing.JSlider jSliderQuality;
     private javax.swing.JSlider jSliderSeconds;
+    private javax.swing.JTextField txt_ci;
     private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_mail;
     private javax.swing.JTextField txt_nombre;
@@ -833,6 +876,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
 
     public void Limpiar(){
         txt_nombre.setText("");
+        txt_ci.setText("");
         txt_mail.setText("");
         txt_telefono.setText("");
         txt_direccion.setText("");

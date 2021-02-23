@@ -157,6 +157,8 @@ public class Ingreso extends javax.swing.JFrame {
         jLabel_footer = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
         n = new javax.swing.JLabel();
+        obs = new javax.swing.JLabel();
+        dias = new javax.swing.JLabel();
         jLabel_Wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -185,19 +187,19 @@ public class Ingreso extends javax.swing.JFrame {
         d.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         d.setForeground(new java.awt.Color(204, 204, 204));
         d.setText("jLabel1");
-        getContentPane().add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        getContentPane().add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
-        mensaje.setFont(new java.awt.Font("Arial", 0, 100)); // NOI18N
+        mensaje.setFont(new java.awt.Font("Arial", 0, 80)); // NOI18N
         mensaje.setForeground(new java.awt.Color(255, 255, 255));
         mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mensaje.setText("jLabel1");
-        getContentPane().add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, -1, -1));
+        getContentPane().add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, -1, -1));
 
         date.setFont(new java.awt.Font("Arial", 0, 60)); // NOI18N
         date.setForeground(new java.awt.Color(255, 255, 255));
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date.setText("jLabel1");
-        getContentPane().add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        getContentPane().add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
 
         jLabelStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelStatus.setText("Click Initialize Button ...");
@@ -220,12 +222,22 @@ public class Ingreso extends javax.swing.JFrame {
         name.setForeground(new java.awt.Color(255, 255, 255));
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("jLabel1");
-        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
+        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, -1));
 
         n.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         n.setForeground(new java.awt.Color(204, 204, 204));
         n.setText("jLabel1");
-        getContentPane().add(n, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        getContentPane().add(n, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        obs.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
+        obs.setForeground(new java.awt.Color(255, 255, 255));
+        obs.setText("jLabel1");
+        getContentPane().add(obs, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, -1, -1));
+
+        dias.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
+        dias.setForeground(new java.awt.Color(255, 255, 255));
+        dias.setText("jLabel1");
+        getContentPane().add(dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1540, 730));
 
         pack();
@@ -321,7 +333,7 @@ public class Ingreso extends javax.swing.JFrame {
                             long secuLevel = 5;
                             boolean[] matched = new boolean[1];
                             int id = 0;
-                            String nombre;
+                            String nombre, observaciones;
                             matched[0] = false;
 
                             try {
@@ -340,7 +352,7 @@ public class Ingreso extends javax.swing.JFrame {
                                             id = rs.getInt("id_cliente");
                                             nombre = rs.getString("nombre_cliente");
                                             
-                                            pst = cn.prepareStatement("select * from equipos where id_cliente = ? and fecha_fin >= CURRENT_DATE");
+                                            pst = cn.prepareStatement("select *, datediff(fecha_fin, CURRENT_DATE) as dia FROM equipos WHERE id_cliente=? and fecha_fin>=CURRENT_DATE");
                                             pst.setInt(1, id);
                                             
                                             rs = pst.executeQuery();
@@ -352,8 +364,10 @@ public class Ingreso extends javax.swing.JFrame {
                                                 
                                                 SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
                                                 String fecha = f.format(rs.getDate("fecha_fin"));
+                                                Integer dias = rs.getInt("dias");
                                                 
-                                                imprimir_cliente(nombre, fecha);
+                                                observaciones = rs.getString("observaciones");
+                                                imprimir_cliente(nombre, fecha, dias.toString() , observaciones);
 
                                                 Timer t2 = new javax.swing.Timer(5000, new ActionListener(){
                                                         public void actionPerformed(ActionEvent e){
@@ -406,12 +420,14 @@ public class Ingreso extends javax.swing.JFrame {
         
     }
     
-    public void imprimir_cliente (String nombre, String fecha){
+    public void imprimir_cliente (String nombre, String fecha, String dia, String observaciones){
         n.setText("Cliente: ");
         d.setText("Vigencia: ");
         name.setText(nombre);
         date.setText(fecha);
         mensaje.setText("Bienvenido!!");
+        obs.setText("Observaciones: " + observaciones);
+        dias.setText("Días restantes: " + dia);
     }
     
     public void limpiar (String msg){
@@ -420,6 +436,8 @@ public class Ingreso extends javax.swing.JFrame {
         name.setText("");
         date.setText("");
         mensaje.setText(msg);
+        obs.setText("");
+        dias.setText("");
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -457,6 +475,7 @@ public class Ingreso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel d;
     private javax.swing.JLabel date;
+    private javax.swing.JLabel dias;
     private javax.swing.JLabel jLabelStatus;
     private javax.swing.JLabel jLabelVerifyImage;
     private javax.swing.JLabel jLabel_NombreUsuario;
@@ -466,5 +485,6 @@ public class Ingreso extends javax.swing.JFrame {
     private javax.swing.JLabel mensaje;
     private javax.swing.JLabel n;
     private javax.swing.JLabel name;
+    private javax.swing.JLabel obs;
     // End of variables declaration//GEN-END:variables
 }

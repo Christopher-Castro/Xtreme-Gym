@@ -73,10 +73,11 @@ public class Informacion_Cliente extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                setTitle("Información del cliente " + rs.getString("nombre_cliente") + " - Sesión de " + user);
+                setTitle("Información del cliente: " + rs.getString("nombre_cliente") + " - Sesión de " + user);
                 jLabel_Titulo.setText("Información del cliente " + rs.getString("nombre_cliente"));
 
                 txt_nombre.setText(rs.getString("nombre_cliente"));
+                txt_ci.setText(rs.getString("ci_cliente"));
                 txt_mail.setText(rs.getString("mail_cliente"));
                 txt_telefono.setText(rs.getString("tel_cliente"));
                 txt_direccion.setText(rs.getString("dir_cliente"));
@@ -168,6 +169,8 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         jButton_Actualizar = new javax.swing.JButton();
         jButton_ImprimirReporte = new javax.swing.JButton();
         jLabel_footer = new javax.swing.JLabel();
+        jLabel_mail1 = new javax.swing.JLabel();
+        txt_ci = new javax.swing.JTextField();
         jLabel_Wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -193,7 +196,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         jLabel_Titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel_Titulo.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Titulo.setText("Información del cliente");
-        getContentPane().add(jLabel_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(jLabel_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel_Nombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,23 +205,23 @@ public class Informacion_Cliente extends javax.swing.JFrame {
 
         jLabel_mail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel_mail.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_mail.setText("em@il:");
+        jLabel_mail.setText("C.I.");
         getContentPane().add(jLabel_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         jLabel_telefono.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel_telefono.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_telefono.setText("Télefono:");
-        getContentPane().add(jLabel_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        getContentPane().add(jLabel_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         jLabel_direccion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel_direccion.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_direccion.setText("Dirección:");
-        getContentPane().add(jLabel_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        getContentPane().add(jLabel_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         jLabel_UltimaModificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel_UltimaModificacion.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_UltimaModificacion.setText("Última modificación por:");
-        getContentPane().add(jLabel_UltimaModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        getContentPane().add(jLabel_UltimaModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
         txt_nombre.setBackground(new java.awt.Color(153, 153, 153));
         txt_nombre.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -232,14 +235,19 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         txt_mail.setForeground(new java.awt.Color(255, 255, 255));
         txt_mail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_mail.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 210, -1));
+        txt_mail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_mailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 210, -1));
 
         txt_telefono.setBackground(new java.awt.Color(153, 153, 153));
         txt_telefono.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         txt_telefono.setForeground(new java.awt.Color(255, 255, 255));
         txt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_telefono.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 210, -1));
+        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 210, -1));
 
         txt_direccion.setBackground(new java.awt.Color(153, 153, 153));
         txt_direccion.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -251,7 +259,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 txt_direccionActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 210, -1));
+        getContentPane().add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 210, -1));
 
         txt_ultimaModificacion.setBackground(new java.awt.Color(153, 153, 153));
         txt_ultimaModificacion.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -259,7 +267,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         txt_ultimaModificacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_ultimaModificacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txt_ultimaModificacion.setEnabled(false);
-        getContentPane().add(txt_ultimaModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 210, -1));
+        getContentPane().add(txt_ultimaModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 210, -1));
 
         jButton_Registrar.setBackground(new java.awt.Color(102, 102, 102));
         jButton_Registrar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
@@ -271,7 +279,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 jButton_RegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 210, 35));
+        getContentPane().add(jButton_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 210, 35));
 
         jButton_Actualizar.setBackground(new java.awt.Color(102, 102, 102));
         jButton_Actualizar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
@@ -283,7 +291,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 jButton_ActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 210, 35));
+        getContentPane().add(jButton_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 210, 35));
 
         jButton_ImprimirReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/impresora.png"))); // NOI18N
         jButton_ImprimirReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -291,10 +299,22 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 jButton_ImprimirReporteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_ImprimirReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 120, 100));
+        getContentPane().add(jButton_ImprimirReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 120, 100));
 
         jLabel_footer.setText("Xtreme Gym ®");
-        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, -1, -1));
+        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, -1, -1));
+
+        jLabel_mail1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel_mail1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_mail1.setText("em@il:");
+        getContentPane().add(jLabel_mail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        txt_ci.setBackground(new java.awt.Color(153, 153, 153));
+        txt_ci.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        txt_ci.setForeground(new java.awt.Color(255, 255, 255));
+        txt_ci.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_ci.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txt_ci, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 210, -1));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 450));
 
         pack();
@@ -310,15 +330,20 @@ public class Informacion_Cliente extends javax.swing.JFrame {
     private void jButton_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ActualizarActionPerformed
 
         int validacion = 0;
-        String nombre, mail, telefono, direccion;
+        String nombre, ci, mail, telefono, direccion;
 
         nombre = txt_nombre.getText().trim();
+        ci = txt_ci.getText().trim();
         mail = txt_mail.getText().trim();
         telefono = txt_telefono.getText().trim();
         direccion = txt_direccion.getText().trim();
 
         if (nombre.equals("")) {
             txt_nombre.setBackground(Color.red);
+            validacion++;
+        }
+        if (ci.equals("")) {
+            txt_ci.setBackground(Color.red);
             validacion++;
         }
         if (mail.equals("")) {
@@ -340,14 +365,15 @@ public class Informacion_Cliente extends javax.swing.JFrame {
 
                 Connection cn = Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
-                        "update clientes set nombre_cliente=?, mail_cliente=?, tel_cliente=?, dir_cliente=?, ultima_modificacion=? "
+                        "update clientes set nombre_cliente=?, ci_cliente=?, mail_cliente=?, tel_cliente=?, dir_cliente=?, ultima_modificacion=? "
                         + "where id_cliente = '" + IDcliente_update + "'");
 
                 pst.setString(1, nombre);
-                pst.setString(2, mail);
-                pst.setString(3, telefono);
-                pst.setString(4, direccion);
-                pst.setString(5, user);
+                pst.setString(2, ci);
+                pst.setString(3, mail);
+                pst.setString(4, telefono);
+                pst.setString(5, direccion);
+                pst.setString(6, user);
 
                 pst.executeUpdate();
                 cn.close();
@@ -355,6 +381,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 Limpiar();
 
                 txt_nombre.setBackground(Color.green);
+                txt_ci.setBackground(Color.green);
                 txt_mail.setBackground(Color.green);
                 txt_telefono.setBackground(Color.green);
                 txt_direccion.setBackground(Color.green);
@@ -399,6 +426,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
             PdfPTable tablaCliente = new PdfPTable(5);
             tablaCliente.addCell("ID");
             tablaCliente.addCell("Nombre");
+            tablaCliente.addCell("C.I.");
             tablaCliente.addCell("email");
             tablaCliente.addCell("Télefono");
             tablaCliente.addCell("Dirección");
@@ -419,6 +447,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                         tablaCliente.addCell(rs.getString(3));
                         tablaCliente.addCell(rs.getString(4));
                         tablaCliente.addCell(rs.getString(5));
+                        tablaCliente.addCell(rs.getString(6));
 
                     } while (rs.next());
 
@@ -479,6 +508,10 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_direccionActionPerformed
 
+    private void txt_mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_mailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_mailActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -525,9 +558,11 @@ public class Informacion_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_direccion;
     private javax.swing.JLabel jLabel_footer;
     private javax.swing.JLabel jLabel_mail;
+    private javax.swing.JLabel jLabel_mail1;
     private javax.swing.JLabel jLabel_telefono;
     private javax.swing.JScrollPane jScrollPane_equipos;
     private javax.swing.JTable jTable_equipos;
+    private javax.swing.JTextField txt_ci;
     private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_mail;
     private javax.swing.JTextField txt_nombre;

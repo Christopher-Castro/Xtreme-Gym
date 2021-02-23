@@ -43,7 +43,7 @@ public class Capturista extends javax.swing.JFrame {
         user = Login.user;
         sesion_usuario = Administrador.sesion_usuario;
         
-        setSize(550, 300);
+        setSize(710, 300);
         setResizable(false); 
         setTitle("Capturista - Sesión de " + user);
         setLocationRelativeTo(null);
@@ -99,6 +99,8 @@ public class Capturista extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jButton_Creatividad = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jLabel_Wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,7 +133,7 @@ public class Capturista extends javax.swing.JFrame {
                 jButton_ImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 120, 100));
+        getContentPane().add(jButton_Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 120, 100));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Registrar Cliente");
@@ -143,11 +145,23 @@ public class Capturista extends javax.swing.JFrame {
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Imprimir Clientes");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, -1, -1));
 
         jLabel7.setText("Xtreme Gym ®");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
-        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 300));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
+
+        jButton_Creatividad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/creatividad.png"))); // NOI18N
+        jButton_Creatividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CreatividadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_Creatividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 120, 100));
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Sistema de Ingreso");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
+        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -225,6 +239,12 @@ public class Capturista extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton_ImprimirActionPerformed
 
+    private void jButton_CreatividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CreatividadActionPerformed
+
+        Ingreso ingreso = new Ingreso();
+        ingreso.setVisible(true);
+    }//GEN-LAST:event_jButton_CreatividadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,12 +281,14 @@ public class Capturista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_Creatividad;
     private javax.swing.JButton jButton_GestionarClientes;
     private javax.swing.JButton jButton_Imprimir;
     private javax.swing.JButton jButton_RegistrarCliente;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel_NombreUsuario;
     private javax.swing.JLabel jLabel_Wallpaper;
