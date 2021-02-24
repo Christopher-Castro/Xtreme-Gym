@@ -53,7 +53,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         user = Login.user;
         IDcliente_update = GestionarClientes.IDcliente_update;
 
-        setSize(630, 450);
+        setSize(690, 500);
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -171,6 +171,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         jLabel_footer = new javax.swing.JLabel();
         jLabel_mail1 = new javax.swing.JLabel();
         txt_ci = new javax.swing.JTextField();
+        jButton_Borrar = new javax.swing.JButton();
         jLabel_Wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -279,7 +280,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 jButton_RegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 210, 35));
+        getContentPane().add(jButton_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 210, 35));
 
         jButton_Actualizar.setBackground(new java.awt.Color(102, 102, 102));
         jButton_Actualizar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
@@ -291,7 +292,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 jButton_ActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 210, 35));
+        getContentPane().add(jButton_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 210, 35));
 
         jButton_ImprimirReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/impresora.png"))); // NOI18N
         jButton_ImprimirReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -302,7 +303,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         getContentPane().add(jButton_ImprimirReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 120, 100));
 
         jLabel_footer.setText("Xtreme Gym ®");
-        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, -1, -1));
+        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, -1, -1));
 
         jLabel_mail1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel_mail1.setForeground(new java.awt.Color(255, 255, 255));
@@ -315,7 +316,19 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         txt_ci.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_ci.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txt_ci, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 210, -1));
-        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 450));
+
+        jButton_Borrar.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_Borrar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        jButton_Borrar.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_Borrar.setText("Borrar cliente");
+        jButton_Borrar.setBorder(null);
+        jButton_Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BorrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 35));
+        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 740, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -512,6 +525,35 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_mailActionPerformed
 
+    private void jButton_BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BorrarActionPerformed
+
+        int n = JOptionPane.showConfirmDialog(null,
+            "¿Desea borrar el registro de cliente y sus servicios asociados?.",
+            "Borrar cleitne",
+            JOptionPane.YES_NO_OPTION);
+
+        if (n == 0) {
+            try {
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("DELETE FROM clientes" + " where id_cliente ='" + IDcliente_update + "'");
+                pst.executeUpdate();
+                cn.close();
+
+                Limpiar();
+
+                JOptionPane.showMessageDialog(null, "Borrado completado.");
+                this.dispose();
+
+            } catch (SQLException e) {
+                System.err.println("Error en al borrar cliente." + e);
+                JOptionPane.showMessageDialog(null, "¡¡ERROR al borrar cliente!!, contacte al administrador.");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Borrado cancelado");
+        }
+    }//GEN-LAST:event_jButton_BorrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -549,6 +591,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Actualizar;
+    private javax.swing.JButton jButton_Borrar;
     private javax.swing.JButton jButton_ImprimirReporte;
     private javax.swing.JButton jButton_Registrar;
     private javax.swing.JLabel jLabel_Nombre;

@@ -36,7 +36,7 @@ public class GestionarClientes extends javax.swing.JFrame {
         initComponents();
         user = Login.user;
         
-        setSize(630, 330);
+        setSize(673, 330);
         setResizable(false);
         setTitle("Capturista - Sesión de " + user);
         setLocationRelativeTo(null);
@@ -143,11 +143,11 @@ public class GestionarClientes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable_clientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 630, 180));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 630, 180));
 
         jLabel_footer.setText("Xtreme Gym ®");
         getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
-        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 330));
+        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

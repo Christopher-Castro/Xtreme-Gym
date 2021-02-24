@@ -57,7 +57,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
         
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(630, 540);
+        setSize(630, 550);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         URL url = Login.class.getResource("/wallpaperPrincipal.jpg");
