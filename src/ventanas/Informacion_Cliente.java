@@ -191,7 +191,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         ));
         jScrollPane_equipos.setViewportView(jTable_equipos);
 
-        getContentPane().add(jScrollPane_equipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 470, 180));
+        getContentPane().add(jScrollPane_equipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 470, 180));
 
         jLabel_Titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel_Titulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,7 +228,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
         txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_nombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, -1));
+        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 690, -1));
 
         txt_mail.setBackground(new java.awt.Color(153, 153, 153));
         txt_mail.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -279,7 +279,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 jButton_RegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 210, 35));
+        getContentPane().add(jButton_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 210, 35));
 
         jButton_Actualizar.setBackground(new java.awt.Color(102, 102, 102));
         jButton_Actualizar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
@@ -291,7 +291,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 jButton_ActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 210, 35));
+        getContentPane().add(jButton_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 210, 35));
 
         jButton_ImprimirReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/impresora.png"))); // NOI18N
         jButton_ImprimirReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -299,7 +299,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
                 jButton_ImprimirReporteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_ImprimirReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 120, 100));
+        getContentPane().add(jButton_ImprimirReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 120, 100));
 
         jLabel_footer.setText("Xtreme Gym ®");
         getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, -1, -1));
@@ -315,7 +315,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
         txt_ci.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_ci.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txt_ci, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 210, -1));
-        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 450));
+        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

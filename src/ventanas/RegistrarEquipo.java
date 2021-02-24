@@ -167,7 +167,7 @@ public class RegistrarEquipo extends javax.swing.JFrame {
         });
         getContentPane().add(cmb_marcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
-        jButton_Registrar.setBackground(new java.awt.Color(153, 153, 255));
+        jButton_Registrar.setBackground(new java.awt.Color(153, 153, 153));
         jButton_Registrar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
         jButton_Registrar.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Registrar.setText("Registrar equipo");

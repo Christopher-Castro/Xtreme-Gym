@@ -129,6 +129,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         cmb_marcas = new javax.swing.JComboBox<>();
         cmb_tipoequipo = new javax.swing.JComboBox<>();
+        jButton_Borrar = new javax.swing.JButton();
         jLabel_Wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -202,14 +203,14 @@ public class InformacionEquipo extends javax.swing.JFrame {
         jButton_Actualizar.setBackground(new java.awt.Color(102, 102, 102));
         jButton_Actualizar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
         jButton_Actualizar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_Actualizar.setText("Actualizar equipo");
+        jButton_Actualizar.setText("Actualizar servicio");
         jButton_Actualizar.setBorder(null);
         jButton_Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_ActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 210, 35));
+        getContentPane().add(jButton_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, 150, 35));
 
         jLabel_footer.setText("Xtreme Gym ®");
         getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, -1, -1));
@@ -245,6 +246,18 @@ public class InformacionEquipo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmb_tipoequipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        jButton_Borrar.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_Borrar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        jButton_Borrar.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_Borrar.setText("Borrar servicio");
+        jButton_Borrar.setBorder(null);
+        jButton_Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BorrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 160, 35));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 530));
 
         pack();
@@ -318,6 +331,35 @@ public class InformacionEquipo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_marcasActionPerformed
 
+    private void jButton_BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BorrarActionPerformed
+        
+        int n = JOptionPane.showConfirmDialog(null,
+        "¿Desea borrar el servicio?",
+        "Borrar servicio",
+        JOptionPane.YES_NO_OPTION);
+        
+        if (n == 0) {
+            try {
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("DELETE FROM equipos" + " where id_equipo ='" + IDequipo + "'");
+                pst.executeUpdate();
+                cn.close();
+
+                Limpiar();
+
+                JOptionPane.showMessageDialog(null, "Borrado completado.");
+                this.dispose();
+
+            } catch (SQLException e) {
+                System.err.println("Error en al borrar servicio." + e);
+                JOptionPane.showMessageDialog(null, "¡¡ERROR al borrar servicio!!, contacte al administrador.");
+            }
+        
+        } else {
+            JOptionPane.showMessageDialog(null, "Borrado cancelado");
+        }
+    }//GEN-LAST:event_jButton_BorrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,6 +400,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmb_marcas;
     private javax.swing.JComboBox<String> cmb_tipoequipo;
     private javax.swing.JButton jButton_Actualizar;
+    private javax.swing.JButton jButton_Borrar;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel_Nombre;
