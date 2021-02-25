@@ -72,7 +72,6 @@ public class GestionarClientes extends javax.swing.JFrame {
                 Object[] fila = new Object[6];
                 for (int i = 0; i < 6; i++) {
                     fila[i] = rs.getObject(i + 1);
-                    System.out.println(rs.getObject(i + 1));
                 }
                 model.addRow(fila);
             }
@@ -83,19 +82,7 @@ public class GestionarClientes extends javax.swing.JFrame {
             System.err.println("Error en el llenado de la tabla.");
         }
         
-        jTable_clientes.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e){
-                int fila_point = jTable_clientes.rowAtPoint(e.getPoint());
-                int columna_point = 0;
-                
-                if(fila_point > -1){
-                    IDcliente_update = (int)model.getValueAt(fila_point, columna_point);
-                    Informacion_Cliente informacion_cliente = new Informacion_Cliente();
-                    informacion_cliente.setVisible(true);                                        
-                }
-            }
-        });
+        ObtenerDatosTabla();
         
     }
     
@@ -119,6 +106,8 @@ public class GestionarClientes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_clientes = new javax.swing.JTable();
         jLabel_footer = new javax.swing.JLabel();
+        Mostrar = new javax.swing.JButton();
+        cmb_cliente = new javax.swing.JTextField();
         jLabel_Wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -143,14 +132,74 @@ public class GestionarClientes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable_clientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 630, 180));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 630, 180));
 
         jLabel_footer.setText("Xtreme Gym ®");
-        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
+        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
+
+        Mostrar.setBackground(new java.awt.Color(102, 102, 102));
+        Mostrar.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        Mostrar.setForeground(new java.awt.Color(0, 0, 0));
+        Mostrar.setText("Buscar");
+        Mostrar.setBorder(null);
+        Mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 190, 30));
+        getContentPane().add(cmb_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 420, 30));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
+
+        String cliente = cmb_cliente.getText();
+        String query = "";
+
+        model.setRowCount(0);
+        model.setColumnCount(0);
+
+        try {
+            Connection cn = Conexion.conectar();
+
+            if (!cliente.equals("")) {
+                query = "select id_cliente, nombre_cliente, ci_cliente, mail_cliente, tel_cliente, ultima_modificacion from clientes where nombre_cliente like '%"+cliente+"%'";
+            } else {
+                query = "select id_cliente, nombre_cliente, ci_cliente, mail_cliente, tel_cliente, ultima_modificacion from clientes";
+            }
+
+            PreparedStatement pst = cn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            jTable_clientes = new JTable(model);
+            jScrollPane1.setViewportView(jTable_clientes);
+
+            model.addColumn(" ");
+            model.addColumn("Nombre");
+            model.addColumn("C.I.");
+            model.addColumn("em@il");
+            model.addColumn("Télefono");
+            model.addColumn("Modificado por");
+
+            while (rs.next()) {
+                Object[] fila = new Object[6];
+                for (int i = 0; i < 6; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.err.println("Error al recuperar los registros de equipos." + e);
+        }
+
+        ObtenerDatosTabla();
+
+    }//GEN-LAST:event_MostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,10 +237,28 @@ public class GestionarClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Mostrar;
+    private javax.swing.JTextField cmb_cliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Wallpaper;
     private javax.swing.JLabel jLabel_footer;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_clientes;
     // End of variables declaration//GEN-END:variables
+
+    public void ObtenerDatosTabla() {
+        jTable_clientes.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e){
+                int fila_point = jTable_clientes.rowAtPoint(e.getPoint());
+                int columna_point = 0;
+                
+                if(fila_point > -1){
+                    IDcliente_update = (int)model.getValueAt(fila_point, columna_point);
+                    Informacion_Cliente informacion_cliente = new Informacion_Cliente();
+                    informacion_cliente.setVisible(true);                                        
+                }
+            }
+        });
+    }
 }

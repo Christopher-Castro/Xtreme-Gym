@@ -357,21 +357,38 @@ public class Ingreso extends javax.swing.JFrame {
                                             
                                             rs = pst.executeQuery();
                                             if (rs.next()){
-                                                System.out.println("cliente reconocido: " + nombre);
-                                                matched[0] = false;
                                                 
-                                                cliente_reconocido = true;
+                                                PreparedStatement pst1 = cn.prepareStatement("SELECT COUNT(id_cliente ) AS cuenta FROM registro WHERE id_cliente=? and fecha_registro=(CURRENT_DATE)");
+                                                pst1.setInt(1, id);
                                                 
-                                                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                                                String fecha = f.format(rs.getDate("fecha_fin"));
-                                                Integer dias = rs.getInt("dias");
+                                                ResultSet rs1 = pst1.executeQuery();
+                                                if (rs1.next() && rs1.getInt("cuenta")==0) {
+                                                    System.out.println("cliente reconocido: " + nombre);
+                                                    
+                                                    pst1 = cn.prepareStatement("INSERT INTO registro values (?,?,CURRENT_DATE)");
+                                                    pst1.setInt(1, 0);
+                                                    pst1.setInt(2, id);
+                                                    
+                                                    rs1 = pst1.executeQuery();
+                                                    
+                                                    matched[0] = false;
+
+                                                    cliente_reconocido = true;
+
+                                                    SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+                                                    String fecha = f.format(rs.getDate("fecha_fin"));
+                                                    Integer dias = rs.getInt("dias");
+
+                                                    observaciones = rs.getString("observaciones");
+                                                    imprimir_cliente(nombre, fecha, dias.toString() , observaciones);
+                                                } else {
+                                                    limpiar(nombre, "Ingreso Restringido");
+                                                }
                                                 
-                                                observaciones = rs.getString("observaciones");
-                                                imprimir_cliente(nombre, fecha, dias.toString() , observaciones);
 
                                                 Timer t2 = new javax.swing.Timer(5000, new ActionListener(){
                                                         public void actionPerformed(ActionEvent e){
-                                                        limpiar("Identifíquese");
+                                                        limpiar("", "Identifíquese");
                                                     }
                                                 });
                                                 t2.start();
@@ -381,17 +398,17 @@ public class Ingreso extends javax.swing.JFrame {
                                             
                                             if (!cliente_reconocido){
                                                 this.jLabelStatus.setText( "Mensualidad vencida! :c ");
-                                                limpiar("Mensualidad vencida");
+                                                limpiar(nombre, "Mensualidad vencida");
                                             }
                                             
                                             break;
                                         } else {
                                             this.jLabelStatus.setText( "Cliente no registrado. Por favor, solicite ayuda.");
-                                            limpiar("No Registrado");
+                                            limpiar("","No Registrado");
                                         }
                                     } else {
                                         System.out.println("Error en la lectura de la huella dactilar. Por favor, intente nuevamente.");
-                                        limpiar("Intente nuevamente");
+                                        limpiar("", "Intente nuevamente");
                                     }
 
                                 }
@@ -405,7 +422,7 @@ public class Ingreso extends javax.swing.JFrame {
                         else
                         {
                             this.jLabelStatus.setText("Error en la lectura QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]");
-                            limpiar("Intente nuevamente");
+                            limpiar("", "Intente nuevamente");
                         }
                     }
                     else
@@ -414,7 +431,7 @@ public class Ingreso extends javax.swing.JFrame {
             }
             else{
             this.jLabelStatus.setText("Bien venido. Coloque su dedo en el sensor antes de ingresar");
-            limpiar("Identifíquese");
+            limpiar("","Identifíquese");
             }
 
         
@@ -430,10 +447,10 @@ public class Ingreso extends javax.swing.JFrame {
         dias.setText("Días restantes: " + dia);
     }
     
-    public void limpiar (String msg){
+    public void limpiar (String nombre, String msg){
         n.setText("");
         d.setText("");
-        name.setText("");
+        name.setText(nombre);
         date.setText("");
         mensaje.setText(msg);
         obs.setText("");

@@ -30,12 +30,16 @@ void loop() {
   }
 
   if (digitalRead(boton) == HIGH) {
-        
-        digitalWrite(luz, HIGH);
-        digitalWrite(torniquete, HIGH);
-        delay(tiempo);
-        digitalWrite(luz, LOW);
-        digitalWrite(torniquete, LOW);
-        Serial.println("boton");
+
+        delay(20);
+
+        if (digitalRead(boton) == HIGH) {
+          digitalWrite(luz, HIGH);
+          digitalWrite(torniquete, HIGH);
+          delay(tiempo);
+          digitalWrite(luz, LOW);
+          digitalWrite(torniquete, LOW);
+          Serial.println("boton");
+        }
       }
 }
