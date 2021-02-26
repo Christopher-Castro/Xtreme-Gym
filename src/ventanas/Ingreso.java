@@ -64,6 +64,8 @@ public class Ingreso extends javax.swing.JFrame {
     private static int MAXIMUM_NFIQ = 2;           //User defined
     private boolean aux = true;
     private boolean cliente_reconocido = false;
+    private boolean servicio_activo = false;
+    private boolean reingreso = false;
     PanamaHitek_Arduino ino;
     Timer timer;
     int short_delay = 3000;
@@ -252,8 +254,8 @@ public class Ingreso extends javax.swing.JFrame {
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 huella();
-                if (cliente_reconocido){
-                    cliente_reconocido = false;
+                if (cliente_reconocido && servicio_activo && !reingreso){
+                    
                     try {
                         ino.sendData("1");
                     } catch (ArduinoException | SerialPortException ex) {
@@ -261,6 +263,9 @@ public class Ingreso extends javax.swing.JFrame {
                     }
  
                 }
+                cliente_reconocido = false;
+                servicio_activo = false;
+                reingreso = false;
             }
         };
         
@@ -347,7 +352,8 @@ public class Ingreso extends javax.swing.JFrame {
 
                                     if (iError == SGFDxErrorCode.SGFDX_ERROR_NONE){
                                         if (matched[0]){
-
+                                            
+                                            cliente_reconocido = true;
                                             this.jLabelStatus.setText( "Cliente reconocido (1er intento)");
                                             id = rs.getInt("id_cliente");
                                             nombre = rs.getString("nombre_cliente");
@@ -358,6 +364,9 @@ public class Ingreso extends javax.swing.JFrame {
                                             rs = pst.executeQuery();
                                             if (rs.next()){
                                                 
+                                                servicio_activo=true;
+                                                
+                                                //Verificación de reingreso
                                                 PreparedStatement pst1 = cn.prepareStatement("SELECT COUNT(id_cliente ) AS cuenta FROM registro WHERE id_cliente=? and fecha_registro=(CURRENT_DATE)");
                                                 pst1.setInt(1, id);
                                                 
@@ -373,7 +382,7 @@ public class Ingreso extends javax.swing.JFrame {
                                                     
                                                     matched[0] = false;
 
-                                                    cliente_reconocido = true;
+                                                    reingreso = false;
 
                                                     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
                                                     String fecha = f.format(rs.getDate("fecha_fin"));
@@ -383,6 +392,7 @@ public class Ingreso extends javax.swing.JFrame {
                                                     imprimir_cliente(nombre, fecha, dias.toString() , observaciones);
                                                 } else {
                                                     limpiar(nombre, "Ingreso Restringido");
+                                                    reingreso = true;
                                                 }
                                                 
                                                 cn.close();
@@ -396,7 +406,7 @@ public class Ingreso extends javax.swing.JFrame {
                                                 
                                             }
                                             
-                                            if (!cliente_reconocido){
+                                            if (cliente_reconocido && !servicio_activo && !reingreso){
                                                 this.jLabelStatus.setText( "Mensualidad vencida! :c ");
                                                 limpiar(nombre, "Mensualidad vencida");
                                             }
