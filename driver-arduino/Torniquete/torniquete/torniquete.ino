@@ -1,7 +1,7 @@
 int boton = 7;
 int luz = 8;
 int torniquete = 10;
-int tiempo = 3000; 
+int tiempo = 5000; 
 
 void setup() {
   
