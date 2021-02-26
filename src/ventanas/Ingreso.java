@@ -369,7 +369,7 @@ public class Ingreso extends javax.swing.JFrame {
                                                     pst1.setInt(1, 0);
                                                     pst1.setInt(2, id);
                                                     
-                                                    rs1 = pst1.executeQuery();
+                                                    pst1.executeUpdate();
                                                     
                                                     matched[0] = false;
 
