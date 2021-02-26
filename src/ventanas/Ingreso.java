@@ -385,7 +385,7 @@ public class Ingreso extends javax.swing.JFrame {
                                                     limpiar(nombre, "Ingreso Restringido");
                                                 }
                                                 
-
+                                                cn.close();
                                                 Timer t2 = new javax.swing.Timer(5000, new ActionListener(){
                                                         public void actionPerformed(ActionEvent e){
                                                         limpiar("", "Identifíquese");
