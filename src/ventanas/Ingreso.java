@@ -352,7 +352,7 @@ public class Ingreso extends javax.swing.JFrame {
                                             id = rs.getInt("id_cliente");
                                             nombre = rs.getString("nombre_cliente");
                                             
-                                            pst = cn.prepareStatement("select *, datediff(fecha_fin, CURRENT_DATE) as dia FROM equipos WHERE id_cliente=? and fecha_fin>=CURRENT_DATE");
+                                            pst = cn.prepareStatement("select *, datediff(fecha_fin, CURRENT_DATE) as dias FROM equipos WHERE id_cliente=? and fecha_fin>=CURRENT_DATE");
                                             pst.setInt(1, id);
                                             
                                             rs = pst.executeQuery();
