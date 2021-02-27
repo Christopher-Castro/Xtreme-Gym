@@ -404,9 +404,7 @@ public class Ingreso extends javax.swing.JFrame {
                                                 t2.start();
                                                 t2.setRepeats(false);
                                                 
-                                            }
-                                            
-                                            if (cliente_reconocido && !servicio_activo && !reingreso){
+                                            } else {
                                                 this.jLabelStatus.setText( "Mensualidad vencida! :c ");
                                                 limpiar(nombre, "Mensualidad vencida");
                                             }
