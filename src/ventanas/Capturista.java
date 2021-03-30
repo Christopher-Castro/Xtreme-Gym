@@ -241,8 +241,8 @@ public class Capturista extends javax.swing.JFrame {
 
     private void jButton_CreatividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CreatividadActionPerformed
 
-        Ingreso ingreso = new Ingreso();
-        ingreso.setVisible(true);
+        //Ingreso ingreso = new Ingreso();
+        //ingreso.setVisible(true);
     }//GEN-LAST:event_jButton_CreatividadActionPerformed
 
     /**
