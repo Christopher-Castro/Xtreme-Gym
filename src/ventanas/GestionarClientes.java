@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -36,7 +37,7 @@ public class GestionarClientes extends javax.swing.JFrame {
         initComponents();
         user = Login.user;
         
-        setSize(673, 330);
+        setSize(670, 330);
         setResizable(false);
         setTitle("Capturista - Sesión de " + user);
         setLocationRelativeTo(null);
@@ -67,6 +68,8 @@ public class GestionarClientes extends javax.swing.JFrame {
             model.addColumn("em@il");
             model.addColumn("Télefono");
             model.addColumn("Modificado por");
+            
+            setJTableColumnsWidth(jTable_clientes, 670, 3, 40, 13, 20, 12, 12);
             
             while (rs.next()) {
                 Object[] fila = new Object[6];
@@ -112,6 +115,8 @@ public class GestionarClientes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(670, 330));
+        setPreferredSize(new java.awt.Dimension(670, 330));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -154,6 +159,20 @@ public class GestionarClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static void setJTableColumnsWidth(JTable table, int tablePreferredWidth,
+        double... percentages) {
+        double total = 0;
+        for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+            total += percentages[i];
+        }
+
+        for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+            TableColumn column = table.getColumnModel().getColumn(i);
+            column.setPreferredWidth((int)
+                    (tablePreferredWidth * (percentages[i] / total)));
+        }
+    }
+    
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
 
         String cliente = cmb_cliente.getText();
@@ -183,7 +202,9 @@ public class GestionarClientes extends javax.swing.JFrame {
             model.addColumn("em@il");
             model.addColumn("Télefono");
             model.addColumn("Modificado por");
-
+            
+            setJTableColumnsWidth(jTable_clientes, 670, 3, 40, 13, 20, 12, 12);
+            
             while (rs.next()) {
                 Object[] fila = new Object[6];
                 for (int i = 0; i < 6; i++) {

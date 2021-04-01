@@ -39,6 +39,7 @@ public class Capturista extends javax.swing.JFrame {
      * Creates new form Capturista
      */
     public Capturista() {
+        setIconImage(getIconImage());
         initComponents();
         user = Login.user;
         sesion_usuario = Administrador.sesion_usuario;
@@ -54,7 +55,7 @@ public class Capturista extends javax.swing.JFrame {
             setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         }
         
-        URL url = Login.class.getResource("/wallpaperPrincipal.jpg");
+        URL url = Capturista.class.getResource("/wallpaperPrincipal.jpg");
         ImageIcon wallpaper = new ImageIcon(url);
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_Wallpaper.getWidth(),
                 jLabel_Wallpaper.getHeight(), Image.SCALE_DEFAULT));
@@ -77,7 +78,7 @@ public class Capturista extends javax.swing.JFrame {
     
     @Override
     public Image getIconImage() {
-        URL url = Login.class.getResource("/icon.png");
+        URL url = Capturista.class.getResource("/icon.png");
         Image retValue = Toolkit.getDefaultToolkit().getImage(url);
         return retValue;
     }

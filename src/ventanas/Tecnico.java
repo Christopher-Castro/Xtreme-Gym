@@ -10,6 +10,7 @@ import java.sql.*;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.net.URL;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
@@ -42,7 +43,8 @@ public class Tecnico extends javax.swing.JFrame {
             setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         }
         
-        ImageIcon wallpaper = new ImageIcon("src/images/wallpaperPrincipal.jpg");
+        URL url = Tecnico.class.getResource("/wallpaperPrincipal.jpg");
+        ImageIcon wallpaper = new ImageIcon(url);
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_Wallpaper.getWidth(),
                 jLabel_Wallpaper.getHeight(), Image.SCALE_DEFAULT));
         jLabel_Wallpaper.setIcon(icono);
@@ -64,7 +66,8 @@ public class Tecnico extends javax.swing.JFrame {
     
     @Override
     public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/icon.png"));
+        URL url = Tecnico.class.getResource("/icon.png");
+        Image retValue = Toolkit.getDefaultToolkit().getImage(url);
         return retValue;
     }
 

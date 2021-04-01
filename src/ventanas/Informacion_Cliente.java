@@ -49,6 +49,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
      * Creates new form Informacion_Cliente
      */
     public Informacion_Cliente() {
+        setIconImage(getIconImage());
         initComponents();
         user = Login.user;
         IDcliente_update = GestionarClientes.IDcliente_update;
@@ -59,7 +60,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        URL url = Login.class.getResource("/wallpaperPrincipal.jpg");
+        URL url = Informacion_Cliente.class.getResource("/wallpaperPrincipal.jpg");
         ImageIcon wallpaper = new ImageIcon(url);
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_Wallpaper.getWidth(),
                 jLabel_Wallpaper.getHeight(), Image.SCALE_DEFAULT));
@@ -138,7 +139,7 @@ public class Informacion_Cliente extends javax.swing.JFrame {
 
     @Override
     public Image getIconImage() {
-        URL url = Login.class.getResource("/icon.png");
+        URL url = Informacion_Cliente.class.getResource("/icon.png");
         Image retValue = Toolkit.getDefaultToolkit().getImage(url);
         return retValue;
     }

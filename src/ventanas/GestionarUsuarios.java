@@ -36,7 +36,7 @@ public class GestionarUsuarios extends javax.swing.JFrame {
         initComponents();
         user = Login.user;
         
-        setSize(630, 330);
+        setSize(650, 330);
         setTitle("Usuarios registrados - Sesión de " + user);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -66,6 +66,12 @@ public class GestionarUsuarios extends javax.swing.JFrame {
             model.addColumn("Permisos");
             model.addColumn("Estatus");
             
+            jTable_usuarios.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jTable_usuarios.getColumnModel().getColumn(1).setPreferredWidth(350);
+            jTable_usuarios.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTable_usuarios.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTable_usuarios.getColumnModel().getColumn(4).setPreferredWidth(70);
+            
             while (rs.next()) {
                 Object[] fila = new Object[5];
                 
@@ -73,6 +79,8 @@ public class GestionarUsuarios extends javax.swing.JFrame {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
+                
+                
             }
             cn.close();
             
@@ -122,6 +130,7 @@ public class GestionarUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setPreferredSize(new java.awt.Dimension(650, 330));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -142,11 +151,11 @@ public class GestionarUsuarios extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable_usuarios);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 630, 180));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 630, 180));
 
         jLabel_footer.setText("Xtreme Gym ®");
         getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
-        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 330));
+        getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

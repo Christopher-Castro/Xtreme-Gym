@@ -50,6 +50,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
      * Creates new form RegistrarClientes
      */
     public RegistrarClientes() {
+        setIconImage(getIconImage());
         initComponents();
         user = Login.user;
         
@@ -60,7 +61,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
         setSize(630, 550);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
-        URL url = Login.class.getResource("/wallpaperPrincipal.jpg");
+        URL url = RegistrarClientes.class.getResource("/wallpaperPrincipal.jpg");
         ImageIcon wallpaper = new ImageIcon(url);
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_Wallpaper.getWidth(),
                 jLabel_Wallpaper.getHeight(), Image.SCALE_DEFAULT));
@@ -70,7 +71,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     
     @Override
     public Image getIconImage() {
-        URL url = Login.class.getResource("/icon.png");
+        URL url = RegistrarClientes.class.getResource("/icon.png");
         Image retValue = Toolkit.getDefaultToolkit().getImage(url);
         return retValue;
     }
@@ -143,18 +144,21 @@ public class RegistrarClientes extends javax.swing.JFrame {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registro de clientes");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -164,24 +168,24 @@ public class RegistrarClientes extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Teléfono:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Dirección:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Registrar cliente:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
 
         txt_nombre.setBackground(new java.awt.Color(153, 153, 153));
         txt_nombre.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
         txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_nombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, -1));
+        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 580, -1));
 
         jButton1.setLabel("Inicializar sensor");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +193,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 140, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 140, 30));
 
         txt_ci.setBackground(new java.awt.Color(153, 153, 153));
         txt_ci.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -208,14 +212,14 @@ public class RegistrarClientes extends javax.swing.JFrame {
         txt_telefono.setForeground(new java.awt.Color(255, 255, 255));
         txt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_telefono.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 210, -1));
+        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 210, -1));
 
         txt_direccion.setBackground(new java.awt.Color(153, 153, 153));
         txt_direccion.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
         txt_direccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_direccion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 210, -1));
+        getContentPane().add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 210, -1));
 
         jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         jButton.addActionListener(new java.awt.event.ActionListener() {
@@ -223,20 +227,20 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 jButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 120, 100));
+        getContentPane().add(jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 120, 100));
 
         jLabelRegisterImage1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jLabelRegisterImage1.setMinimumSize(new java.awt.Dimension(130, 150));
         jLabelRegisterImage1.setPreferredSize(new java.awt.Dimension(130, 150));
-        getContentPane().add(jLabelRegisterImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
+        getContentPane().add(jLabelRegisterImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
 
         jLabelRegisterImage2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jLabelRegisterImage2.setMinimumSize(new java.awt.Dimension(130, 150));
         jLabelRegisterImage2.setPreferredSize(new java.awt.Dimension(130, 150));
-        getContentPane().add(jLabelRegisterImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
+        getContentPane().add(jLabelRegisterImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
 
         jLabel_footer.setText("                       Xtreme Gym ®");
-        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, -1));
+        getContentPane().add(jLabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, -1));
 
         jButtonRegister.setText("Validar muestra");
         jButtonRegister.setActionCommand("jButton1");
@@ -248,7 +252,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 jButtonRegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 130, 30));
+        getContentPane().add(jButtonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, 130, 30));
 
         jButtonCaptureR1.setActionCommand("jButton1");
         jButtonCaptureR1.setLabel("Capturar R1");
@@ -260,24 +264,26 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 jButtonCaptureR1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCaptureR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 130, 30));
+        getContentPane().add(jButtonCaptureR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 130, 30));
 
         jProgressBarR1.setForeground(new java.awt.Color(0, 51, 153));
-        getContentPane().add(jProgressBarR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 130, -1));
+        getContentPane().add(jProgressBarR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 130, -1));
 
         jProgressBarR2.setForeground(new java.awt.Color(0, 51, 153));
-        getContentPane().add(jProgressBarR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 130, -1));
+        getContentPane().add(jProgressBarR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 130, -1));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Calidad de imagen");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
 
+        jSliderQuality.setForeground(new java.awt.Color(255, 255, 255));
         jSliderQuality.setMajorTickSpacing(10);
         jSliderQuality.setMinorTickSpacing(10);
         jSliderQuality.setPaintLabels(true);
         jSliderQuality.setPaintTicks(true);
+        jSliderQuality.setValue(80);
         jSliderQuality.setName(""); // NOI18N
-        getContentPane().add(jSliderQuality, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 160, 45));
+        getContentPane().add(jSliderQuality, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 160, 45));
 
         jButtonCaptureR2.setActionCommand("jButton1");
         jButtonCaptureR2.setLabel("Capturar R2");
@@ -289,26 +295,27 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 jButtonCaptureR2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCaptureR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 130, 30));
+        getContentPane().add(jButtonCaptureR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 130, 30));
 
         jLabel8.setText("Nivel de seguridad:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, -1, -1));
 
         jComboBoxRegisterSecurityLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LOWEST", "LOWER", "LOW", "BELOW_NORMAL", "NORMAL", "ABOVE_NORMAL", "HIGH", "HIGHER", "HIGHEST" }));
-        jComboBoxRegisterSecurityLevel.setSelectedIndex(4);
-        getContentPane().add(jComboBoxRegisterSecurityLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 130, 30));
+        jComboBoxRegisterSecurityLevel.setSelectedIndex(6);
+        getContentPane().add(jComboBoxRegisterSecurityLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 130, 30));
 
+        jSliderSeconds.setForeground(new java.awt.Color(255, 255, 255));
         jSliderSeconds.setMajorTickSpacing(1);
         jSliderSeconds.setMaximum(10);
         jSliderSeconds.setMinimum(1);
         jSliderSeconds.setPaintLabels(true);
         jSliderSeconds.setPaintTicks(true);
         jSliderSeconds.setValue(5);
-        getContentPane().add(jSliderSeconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 160, 45));
+        getContentPane().add(jSliderSeconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 160, 45));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Timeout (segundos)");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, -1, -1));
 
         jLabelStatus.setText("Click Initialize Button ...");
         jLabelStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -360,12 +367,12 @@ public class RegistrarClientes extends javax.swing.JFrame {
 
         jLabelRegistrationBox.setBackground(new java.awt.Color(204, 204, 204));
         jLabelRegistrationBox.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de huella dactilar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
-        getContentPane().add(jLabelRegistrationBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 340, 420));
+        getContentPane().add(jLabelRegistrationBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 340, 360));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("em@il:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         txt_mail.setBackground(new java.awt.Color(153, 153, 153));
         txt_mail.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -377,7 +384,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 txt_mailActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 210, -1));
+        getContentPane().add(txt_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 210, -1));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 520));
 
         pack();
@@ -798,6 +805,35 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private void txt_mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_mailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_mailActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        fplib = new JSGFPLib();       
+        ret = fplib.Init(SGFDxDeviceName.SG_DEV_AUTO);
+        if ((fplib != null) && (ret  == SGFDxErrorCode.SGFDX_ERROR_NONE))
+        {
+            this.jLabelStatus.setText("JSGFPLib Initialization Success");
+            ret = fplib.OpenDevice(SGPPPortAddr.AUTO_DETECT);
+            if (ret != SGFDxErrorCode.SGFDX_ERROR_NONE)
+            {
+                this.jLabelStatus.setText("OpenDevice() Success [" + ret + "]");       
+                ret = fplib.GetDeviceInfo(deviceInfo);
+                if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE)
+                {
+                    
+                    imgRegistration1 = new BufferedImage(deviceInfo.imageWidth, deviceInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+                    imgRegistration2 = new BufferedImage(deviceInfo.imageWidth, deviceInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+                    imgVerification = new BufferedImage(deviceInfo.imageWidth, deviceInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+                    this.enableControls();
+                }
+                else
+                    this.jLabelStatus.setText("GetDeviceInfo() Error [" + ret + "]");                                
+            }
+            else
+                this.jLabelStatus.setText("OpenDevice() Error [" + ret + "]");                                
+        }
+        else
+            this.jLabelStatus.setText("JSGFPLib Initialization Failed");
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

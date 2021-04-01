@@ -27,6 +27,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        setIconImage(getIconImage());
         initComponents();
         setSize(400, 550);
         setResizable(false);
