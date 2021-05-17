@@ -193,7 +193,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 140, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 140, 30));
 
         txt_ci.setBackground(new java.awt.Color(153, 153, 153));
         txt_ci.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -807,7 +807,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_mailActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        fplib = new JSGFPLib();       
+        /*fplib = new JSGFPLib();       
         ret = fplib.Init(SGFDxDeviceName.SG_DEV_AUTO);
         if ((fplib != null) && (ret  == SGFDxErrorCode.SGFDX_ERROR_NONE))
         {
@@ -832,7 +832,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 this.jLabelStatus.setText("OpenDevice() Error [" + ret + "]");                                
         }
         else
-            this.jLabelStatus.setText("JSGFPLib Initialization Failed");
+            this.jLabelStatus.setText("JSGFPLib Initialization Failed");*/
     }//GEN-LAST:event_formWindowOpened
 
     /**
